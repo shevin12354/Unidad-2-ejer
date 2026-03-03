@@ -70,8 +70,14 @@ function validarDivision(n2) {
     }
     return true;
 }
+function limpiar() {
+    document.getElementById("numero1").value = "";
+    document.getElementById("numero2").value = "";
+    mensajeSalida(0);
+}
 
 
 function mensajeSalida(valor) {
     document.getElementById("resultado").textContent = valor;
 }
+

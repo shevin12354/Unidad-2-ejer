@@ -5,24 +5,36 @@
     <title> Calculadora Unidad  2
 
     </title>
+    <link rel="stylesheet" href="css/estilos.css">
     
 </head>
 <body>
 
-    <h1>Calculadora </h1>
-    <input type="number" id="numero1">
-    <input type="number" id="numero2">
-    <button onclick="sumar()">sumar</button>
-    <button onclick="restar()">Restar</button>
-    <button onclick="multiplicar()">Multiplicar</button>
-    <button onclick="dividir()">Dividir</button>
-    <button onclick="porcentaje()">Porcentaje</button>
-    <p>Resultado: <span id="resultado">0</span></p>
+    <div class="calculadora">
+
+        <h1>Calculadora</h1>
+
+        <div class="pantalla">
+            <span id="resultado">0</span>
+        </div>
+
+        <div class="inputs">
+            <input type="number" id="numero1" placeholder="Número 1">
+            <input type="number" id="numero2" placeholder="Número 2">
+        </div>
+
+        <div class="botones">
+            <button onclick="limpiar()" class="ac">AC</button>
+            <button onclick="sumar()">+</button>
+            <button onclick="restar()">−</button>
+            <button onclick="multiplicar()">×</button>
+            <button onclick="dividir()">÷</button>
+            <button onclick="porcentaje()">%</button>
+        </div>
+
+    </div>
 
     <script src="js/script.js"></script>
-    
 
-
-   
 </body>
 </html>
