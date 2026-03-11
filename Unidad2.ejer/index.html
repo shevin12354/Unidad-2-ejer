@@ -2,31 +2,95 @@
 <html lang="es">
 
 <head>
-    <meta charset="UTF-8">
-    <title>Formulario de Registro</title>
-    <link rel="stylesheet" href="css/estilos.css">
+<meta charset="UTF-8">
+<title>CRUD Docentes - Unidad 2</title>
 </head>
 
 <body>
 
-<h1>Registro de Usuario</h1>
+<h1>Administrar Docentes</h1>
 
-<form id="formulario">
+<form>
 
-    <label>Nombre:</label>
-    <input type="text" id="nombre">
+<label>Tipo Documento</label>
+<select id="tipoDocumento">
+<option value="">--</option>
+<option>CC</option>
+<option>CE</option>
+<option>TI</option>
+<option>NIUP</option>
+</select>
 
-    <label>Edad:</label>
-    <input type="number" id="edad">
+<label>Nombre</label>
+<input type="text" id="nombre">
 
-    <label>Correo:</label>
-    <input type="email" id="correo">
+<label>Apellido</label>
+<input type="text" id="apellido">
 
-    <button type="button" onclick="registrar()">Registrar</button>
+<label>Fecha Nacimiento</label>
+<input type="date" id="fechaNacimiento">
+
+<label>Nivel de estudios</label>
+<select id="nivel">
+<option value="">--</option>
+<option>Pregrado</option>
+<option>Maestria</option>
+<option>Doctorado</option>
+</select>
+
+<label>Área</label>
+<select id="area">
+<option value="">--</option>
+<option>Matematicas</option>
+<option>Ciencias</option>
+<option>Sistemas</option>
+</select>
+
+<label>Grado</label>
+<select id="grado">
+<option value="">--</option>
+<option>Primer Semestre</option>
+<option>Segundo Semestre</option>
+<option>Tercer Semestre</option>
+<option>Cuarto Semestre</option>
+</select>
+
+<label>EPS</label>
+<input type="text" id="eps">
+
+<label>Salario</label>
+<input type="number" id="salario">
+
+<br><br>
+
+<button type="button" onclick="guardarDocente()">Guardar</button>
+<button type="reset">Cancelar</button>
 
 </form>
 
-<p id="mensaje"></p>
+<h2>Lista de Docentes</h2>
+
+<table border="1">
+
+<thead>
+<tr>
+<th>Tipo</th>
+<th>Nombre</th>
+<th>Apellido</th>
+<th>F. Nac</th>
+<th>Nivel</th>
+<th>Área</th>
+<th>Grado</th>
+<th>EPS</th>
+<th>Salario</th>
+<th>Acciones</th>
+</tr>
+</thead>
+
+<tbody id="tablaDocentes">
+</tbody>
+
+</table>
 
 <script src="js/script.js"></script>
 
