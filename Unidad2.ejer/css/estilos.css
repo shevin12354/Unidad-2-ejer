@@ -1,0 +1,248 @@
+/* FUENTE */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap');
+
+/* VARIABLES */
+:root {
+    --bg-page: #f8fafc;
+    --card-bg: #ffffff;
+    --text-main: #000;
+    --text-muted: #64748b;
+    --danger: #ef476f;
+
+    --radius-lg: 20px;
+    --radius-md: 12px;
+
+    --shadow-soft: 0 15px 35px rgba(0,0,0,0.08);
+}
+
+/* RESET */
+*{
+box-sizing:border-box;
+margin:0;
+padding:0;
+}
+
+/* BODY */
+body{
+font-family:'Plus Jakarta Sans',sans-serif;
+background:var(--bg-page);
+padding:40px 20px;
+color:var(--text-main);
+}
+
+/* TITULO */
+h1{
+text-align:center;
+font-size:2.7rem;
+font-weight:800;
+margin-bottom:40px;
+letter-spacing:-1px;
+}
+
+/* CONTENEDOR */
+.main-container{
+display:flex;
+gap:30px;
+max-width:1400px;
+margin:auto;
+align-items:flex-start;
+}
+
+/* PANEL FORM */
+.form-panel{
+flex:0 0 360px;
+background:var(--card-bg);
+padding:30px;
+border-radius:var(--radius-lg);
+box-shadow:var(--shadow-soft);
+transition:all .3s;
+}
+
+.form-panel:hover{
+transform:translateY(-4px);
+}
+
+/* SUBTITULO */
+.form-panel h3{
+font-size:1.3rem;
+margin-bottom:20px;
+font-weight:700;
+}
+
+/* LABEL */
+label{
+display:block;
+margin-top:16px;
+font-size:0.7rem;
+font-weight:700;
+letter-spacing:1px;
+text-transform:uppercase;
+color:var(--text-muted);
+}
+
+/* INPUTS */
+input,select{
+width:100%;
+padding:12px 15px;
+margin-top:6px;
+border-radius:var(--radius-md);
+border:2px solid #f1f5f9;
+background:#f8fafc;
+font-size:0.95rem;
+transition:.3s;
+}
+
+input:focus,select:focus{
+outline:none;
+border-color:#000;
+background:#fff;
+}
+
+/* BOTON GUARDAR */
+#btnGuardar{
+margin-top:25px;
+width:100%;
+padding:14px;
+background:#000;
+color:#fff;
+border:none;
+border-radius:var(--radius-md);
+font-size:1rem;
+font-weight:700;
+cursor:pointer;
+transition:.25s;
+}
+
+#btnGuardar:hover{
+transform:translateY(-3px);
+background:#222;
+}
+
+/* BOTON CANCELAR */
+.btn-cancelar{
+margin-top:10px;
+width:100%;
+padding:12px;
+border-radius:var(--radius-md);
+border:2px solid #f1f5f9;
+background:transparent;
+font-weight:600;
+cursor:pointer;
+}
+
+/* PANEL TABLA */
+.table-panel{
+flex:1;
+background:var(--card-bg);
+padding:30px;
+border-radius:var(--radius-lg);
+box-shadow:var(--shadow-soft);
+}
+
+/* CONTADOR */
+#contador{
+background:#000;
+color:#fff;
+display:inline-block;
+padding:6px 16px;
+border-radius:40px;
+font-size:.85rem;
+font-weight:700;
+margin-bottom:25px;
+}
+
+/* TABLA */
+table{
+width:100%;
+border-collapse:separate;
+border-spacing:0;
+}
+
+/* HEADERS */
+th{
+text-align:left;
+padding:16px;
+font-size:.75rem;
+font-weight:800;
+text-transform:uppercase;
+border-bottom:2px solid #000;
+background:#f8fafc;
+}
+
+/* CELDAS */
+td{
+padding:16px;
+border-bottom:1px solid #f1f5f9;
+font-size:.95rem;
+}
+
+/* FILAS ALTERNAS */
+tbody tr:nth-child(even){
+background:#fafafa;
+}
+
+/* HOVER FILA */
+tr{
+transition:.2s;
+}
+
+tr:hover td{
+background:#f1f5f9;
+}
+
+/* BOTONES ACCIONES */
+.acciones{
+text-align:center;
+}
+
+.acciones-container{
+display:flex;
+justify-content:center;
+gap:10px;
+}
+
+/* BOTON EDITAR */
+.btn-edit{
+background:#fff;
+border:1px solid #000;
+padding:8px 14px;
+border-radius:8px;
+font-weight:700;
+cursor:pointer;
+transition:.2s;
+}
+
+.btn-edit:hover{
+background:#000;
+color:#fff;
+}
+
+/* BOTON ELIMINAR */
+.btn-delete{
+background:rgba(239,71,111,0.1);
+color:var(--danger);
+border:none;
+padding:8px 14px;
+border-radius:8px;
+font-weight:700;
+cursor:pointer;
+transition:.2s;
+}
+
+.btn-delete:hover{
+background:var(--danger);
+color:#fff;
+}
+
+/* RESPONSIVE */
+@media(max-width:1000px){
+
+.main-container{
+flex-direction:column;
+}
+
+.form-panel{
+width:100%;
+}
+
+}

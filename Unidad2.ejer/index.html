@@ -1,83 +1,89 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-<meta charset="UTF-8">
-<title>CRUD Docentes - Unidad 2</title>
+    <meta charset="UTF-8">
+    <title>CRUD Docentes - Uniremington</title>
+    <link rel="stylesheet" href="css/estilos.css">
 </head>
-
 <body>
 
-<h1>Administrar Docentes</h1>
+    <h1>Gestión Académica de Docentes</h1>
 
-<form>
+    <div class="main-container">
+        
+        <aside class="form-panel">
+            <form id="formDocente">
+                <h3>Registro</h3>
+                
+                
+                <label>ID  </label>
+<input type="text" id="idEstudiante" placeholder="Ej: 10453842">
 
 <label>Tipo Documento</label>
 <select id="tipoDocumento">
-<option value="">--</option>
-<option>CC</option>
-<option>CE</option>
-<option>TI</option>
-<option>NIUP</option>
+    <option value="">--</option>
+    <option>CC</option>
+    <option>TI</option>
+    <option>CE</option>
+    <option>NIUP</option>
 </select>
 
-<label>Nombre</label>
-<input type="text" id="nombre">
+                <label>Nombre</label>
+                <input type="text" id="nombre">
 
-<label>Apellido</label>
-<input type="text" id="apellido">
+                <label>Apellido</label>
+                <input type="text" id="apellido">
 
-<label>Fecha Nacimiento</label>
-<input type="date" id="fechaNacimiento">
+                <label>Fecha Nacimiento</label>
+                <input type="date" id="fechaNacimiento">
 
-<label>Nivel de estudios</label>
-<select id="nivel">
-<option value="">--</option>
-<option>Pregrado</option>
-<option>Maestria</option>
-<option>Doctorado</option>
-</select>
+                <label>Nivel de estudios</label>
+                <select id="nivel">
+                    <option value="">--</option>
+                    <option>Pregrado</option>
+                    <option>Maestria</option>
+                    <option>Doctorado</option>
+                </select>
 
-<label>Área</label>
-<select id="area">
-<option value="">--</option>
-<option>Matematicas</option>
-<option>Ciencias</option>
-<option>Sistemas</option>
-</select>
+                <label>Área</label>
+                <select id="area">
+                    <option value="">--</option>
+                    <option>Matematicas</option>
+                    <option>Ciencias</option>
+                    <option>Sistemas</option>
+                </select>
 
-<label>Grado</label>
-<select id="grado">
-<option value="">--</option>
-<option>Primer Semestre</option>
-<option>Segundo Semestre</option>
-<option>Tercer Semestre</option>
-<option>Cuarto Semestre</option>
-</select>
+                <label>Grado</label>
+                <select id="grado">
+                    <option value="">--</option>
+                    <option>1er Semestre</option>
+                    <option>2do Semestre</option>
+                    <option>3er Semestre</option>
+                    <option>4to Semestre</option>
+                </select>
 
-<label>EPS</label>
-<input type="text" id="eps">
+                <label>EPS</label>
+                <input type="text" id="eps">
 
-<label>Salario</label>
-<input type="number" id="salario">
+                <label>Salario</label>
+                <input type="number" id="salario">
 
-<br><br>
+                <div class="button-group">
+                    <button type="button" id="btnGuardar" onclick="guardarDocente()">Guardar</button>
+                    <button type="button" class="btn-cancelar" onclick="limpiarInterfaz()">Cancelar</button>
+                </div>
+            </form>
+        </aside>
 
-<button type="button" onclick="guardarDocente()">Guardar</button>
-<button type="reset">Cancelar</button>
-
-</form>
-
-<h2>Lista de Docentes</h2>
-
-<table border="1">
-
-<thead>
-<tr>
+        <main class="table-panel">
+            <div id="contador">Total docentes: 0</div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
 <th>Tipo</th>
 <th>Nombre</th>
 <th>Apellido</th>
-<th>F. Nac</th>
 <th>Nivel</th>
 <th>Área</th>
 <th>Grado</th>
@@ -85,14 +91,13 @@
 <th>Salario</th>
 <th>Acciones</th>
 </tr>
-</thead>
+                </thead>
+                <tbody id="tablaDocentes"></tbody>
+            </table>
+        </main>
+    </div>
 
-<tbody id="tablaDocentes">
-</tbody>
-
-</table>
-
-<script src="js/script.js"></script>
-
+    <!-- Ruta correcta al archivo JavaScript dentro de la carpeta js -->
+    <script src="js/script.js"></script>
 </body>
 </html>

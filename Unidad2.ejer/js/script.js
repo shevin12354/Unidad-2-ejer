@@ -1,76 +1,119 @@
 let docentes = [];
+let editIndex = -1;
 
-function guardarDocente(){
-
-let tipo = document.getElementById("tipoDocumento").value;
-let nombre = document.getElementById("nombre").value;
-let apellido = document.getElementById("apellido").value;
-let fecha = document.getElementById("fechaNacimiento").value;
-let nivel = document.getElementById("nivel").value;
-let area = document.getElementById("area").value;
-let grado = document.getElementById("grado").value;
-let eps = document.getElementById("eps").value;
-let salario = document.getElementById("salario").value;
-
-let docente = {
-tipo: tipo,
-nombre: nombre,
-apellido: apellido,
-fecha: fecha,
-nivel: nivel,
-area: area,
-grado: grado,
-eps: eps,
-salario: salario
+function obtenerDatosFormulario() {
+    return {
+    id: document.getElementById("idEstudiante").value.trim(),
+    tipo: document.getElementById("tipoDocumento").value,
+    nombre: document.getElementById("nombre").value.trim(),
+    apellido: document.getElementById("apellido").value.trim(),
+    fecha: document.getElementById("fechaNacimiento").value,
+    nivel: document.getElementById("nivel").value,
+    area: document.getElementById("area").value,
+    grado: document.getElementById("grado").value,
+    eps: document.getElementById("eps").value.trim(),
+    salario: document.getElementById("salario").value
 };
+}
 
-docentes.push(docente);
+function esValido(d) {
 
-let tabla = document.getElementById("tablaDocentes");
+    if (Object.values(d).some(v => v === "")) {
+        alert("Por favor, complete todos los campos.");
+        return false;
+    }
 
-tabla.innerHTML += `
+    if (isNaN(parseFloat(d.salario)) || parseFloat(d.salario) <= 0) {
+        alert("Ingrese un salario válido mayor a 0.");
+        return false;
+    }
+
+    return true;
+}
+
+function guardarDocente() {
+
+    const datos = obtenerDatosFormulario();
+
+    if (esValido(datos)) {
+
+        datos.salario = parseFloat(datos.salario);
+
+        if (editIndex === -1) {
+            docentes.push(datos);
+        } else {
+            docentes[editIndex] = datos;
+            editIndex = -1;
+            document.getElementById("btnGuardar").innerText = "Guardar";
+        }
+
+        actualizarPantalla();
+        limpiarInterfaz();
+    }
+}
+
+function actualizarPantalla() {
+
+    const tabla = document.getElementById("tablaDocentes");
+    tabla.innerHTML = "";
+
+    docentes.forEach((d, i) => {
+
+        tabla.innerHTML += `
 <tr>
-<td>${tipo}</td>
-<td>${nombre}</td>
-<td>${apellido}</td>
-<td>${fecha}</td>
-<td>${nivel}</td>
-<td>${area}</td>
-<td>${grado}</td>
-<td>${eps}</td>
-<td>${salario}</td>
+<td>${d.id}</td>
+<td>${d.tipo}</td>
+<td>${d.nombre}</td>
+<td>${d.apellido}</td>
+<td>${d.nivel}</td>
+<td>${d.area}</td>
+<td>${d.grado}</td>
+<td>${d.eps}</td>
+<td>$${d.salario.toLocaleString()}</td>
 <td>
-<td>
-<button onclick="editarDocente(this)">Editar</button>
-<button onclick="eliminarDocente(this)">Eliminar</button>
-</td></td>
+<button class="btn-edit" onclick="prepararEdicion(${i})">Editar</button>
+<button class="btn-delete" onclick="eliminarDocente(${i})">Eliminar</button>
+</td>
 </tr>
-`;
-document.querySelector("form").reset();
+        `;
+    });
 
+    //  ACTUALIZAR CONTADOR
+    document.getElementById("contador").innerText = "Total docentes: " + docentes.length;
 }
-function eliminarDocente(boton){
 
-let fila = boton.parentNode.parentNode;
-fila.remove();
+function limpiarInterfaz() {
 
+    document.getElementById("formDocente").reset();
+    editIndex = -1;
+    document.getElementById("btnGuardar").innerText = "Guardar";
 }
-function editarDocente(boton){
 
-let fila = boton.parentNode.parentNode;
+function prepararEdicion(index) {
 
-let celdas = fila.children;
+    const d = docentes[index];
 
-document.getElementById("tipoDocumento").value = celdas[0].innerText;
-document.getElementById("nombre").value = celdas[1].innerText;
-document.getElementById("apellido").value = celdas[2].innerText;
-document.getElementById("fechaNacimiento").value = celdas[3].innerText;
-document.getElementById("nivel").value = celdas[4].innerText;
-document.getElementById("area").value = celdas[5].innerText;
-document.getElementById("grado").value = celdas[6].innerText;
-document.getElementById("eps").value = celdas[7].innerText;
-document.getElementById("salario").value = celdas[8].innerText;
+    document.getElementById("tipoDocumento").value = d.tipo;
+    document.getElementById("nombre").value = d.nombre;
+    document.getElementById("apellido").value = d.apellido;
+    document.getElementById("fechaNacimiento").value = d.fecha;
+    document.getElementById("nivel").value = d.nivel;
+    document.getElementById("area").value = d.area;
+    document.getElementById("grado").value = d.grado;
+    document.getElementById("eps").value = d.eps;
+    document.getElementById("salario").value = d.salario;
 
-fila.remove();
+    editIndex = index;
 
+    document.getElementById("btnGuardar").innerText = "Actualizar";
+}
+
+function eliminarDocente(index) {
+
+    if (confirm("¿Eliminar este registro?")) {
+
+        docentes.splice(index, 1);
+
+        actualizarPantalla();
+    }
 }
