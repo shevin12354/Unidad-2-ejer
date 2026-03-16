@@ -1,89 +1,98 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <title>CRUD Docentes - Uniremington</title>
-    <link rel="stylesheet" href="css/estilos.css">
+<meta charset="UTF-8">
+<title>CRUD Docentes - Uniremington</title>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<link rel="stylesheet" href="css/estilos.css">
 </head>
+
 <body>
 
-    <h1>Gestión Académica de Docentes</h1>
+<h1>Gestión Académica de Docentes</h1>
 
-    <div class="main-container">
-        
-        <aside class="form-panel">
-            <form id="formDocente">
-                <h3>Registro</h3>
-                
-                
-                <label>ID  </label>
-<input type="text" id="idEstudiante" placeholder="Ej: 10453842">
+<div class="main-container">
+
+<aside class="form-panel">
+
+<form id="formDocente" onsubmit="return false;">
+
+<h3 id="formTitle">Registro</h3>
+
+<label>ID</label>
+<input type="number" id="id" name="id" placeholder="Ej: 10453842">
 
 <label>Tipo Documento</label>
-<select id="tipoDocumento">
-    <option value="">--</option>
-    <option>CC</option>
-    <option>TI</option>
-    <option>CE</option>
-    <option>NIUP</option>
+<select id="tipoDocumento" name="tipo_documento">
+<option value="">--</option>
+<option value="CC">CC</option>
+<option value="TI">TI</option>
+<option value="CE">CE</option>
+<option value="NIUP">NIUP</option>
 </select>
 
-                <label>Nombre</label>
-                <input type="text" id="nombre">
+<label>Nombre</label>
+<input type="text" id="nombre" name="nombre">
 
-                <label>Apellido</label>
-                <input type="text" id="apellido">
+<label>Apellido</label>
+<input type="text" id="apellido" name="apellido">
 
-                <label>Fecha Nacimiento</label>
-                <input type="date" id="fechaNacimiento">
+<label>Fecha Nacimiento</label>
+<input type="date" id="fechaNacimiento" name="fecha_nacimiento">
 
-                <label>Nivel de estudios</label>
-                <select id="nivel">
-                    <option value="">--</option>
-                    <option>Pregrado</option>
-                    <option>Maestria</option>
-                    <option>Doctorado</option>
-                </select>
+<label>Nivel de estudios</label>
+<select id="nivel" name="nivel">
+<option value="">--</option>
+<option value="Pregrado">Pregrado</option>
+<option value="Maestria">Maestria</option>
+<option value="Doctorado">Doctorado</option>
+</select>
 
-                <label>Área</label>
-                <select id="area">
-                    <option value="">--</option>
-                    <option>Matematicas</option>
-                    <option>Ciencias</option>
-                    <option>Sistemas</option>
-                </select>
+<label>Área</label>
+<select id="area" name="area">
+<option value="">--</option>
+<option value="Matematicas">Matematicas</option>
+<option value="Ciencias">Ciencias</option>
+<option value="Sistemas">Sistemas</option>
+</select>
 
-                <label>Grado</label>
-                <select id="grado">
-                    <option value="">--</option>
-                    <option>1er Semestre</option>
-                    <option>2do Semestre</option>
-                    <option>3er Semestre</option>
-                    <option>4to Semestre</option>
-                </select>
+<label>Grado</label>
+<select id="grado" name="grado">
+<option value="">--</option>
+<option value="1er Semestre">1er Semestre</option>
+<option value="2do Semestre">2do Semestre</option>
+<option value="3er Semestre">3er Semestre</option>
+<option value="4to Semestre">4to Semestre</option>
+</select>
 
-                <label>EPS</label>
-                <input type="text" id="eps">
+<label>EPS</label>
+<input type="text" id="eps" name="eps">
 
-                <label>Salario</label>
-                <input type="number" id="salario">
+<label>Salario</label>
+<input type="number" id="salario" name="salario" step="0.01">
 
-                <div class="button-group">
-                    <button type="button" id="btnGuardar" onclick="guardarDocente()">Guardar</button>
-                    <button type="button" class="btn-cancelar" onclick="limpiarInterfaz()">Cancelar</button>
-                </div>
-            </form>
-        </aside>
+<div class="button-group">
+<button type="button" id="btnGuardar" onclick="guardarDocente()">Guardar</button>
+<button type="button" class="btn-cancelar" onclick="limpiarInterfaz()">Cancelar</button>
+</div>
 
-        <main class="table-panel">
-            <div id="contador">Total docentes: 0</div>
-            <table>
-                <thead>
-                    <tr>
-                        <th>ID</th>
+</form>
+
+</aside>
+
+<main class="table-panel">
+
+<div id="contador">Total docentes: 0</div>
+
+<table>
+
+<thead>
+<tr>
+<th>ID</th>
 <th>Tipo</th>
 <th>Nombre</th>
 <th>Apellido</th>
+<th>Fecha Nacimiento</th>
 <th>Nivel</th>
 <th>Área</th>
 <th>Grado</th>
@@ -91,13 +100,17 @@
 <th>Salario</th>
 <th>Acciones</th>
 </tr>
-                </thead>
-                <tbody id="tablaDocentes"></tbody>
-            </table>
-        </main>
-    </div>
+</thead>
 
-    <!-- Ruta correcta al archivo JavaScript dentro de la carpeta js -->
-    <script src="js/script.js"></script>
+<tbody id="tablaDocentes"></tbody>
+
+</table>
+
+</main>
+
+</div>
+
+<script src="js/script.js"></script>
+
 </body>
 </html>
